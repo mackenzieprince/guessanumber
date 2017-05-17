@@ -50,7 +50,7 @@ def guess_a_num(secret_number,guessed_number_list):
     guess = int(guess)
     guessed_number_list.append(guess)
     if guess == secret_number:
-        print "You got it! The number was "
+        print "You got it! The number was (secret_number)"
         # play()
     elif guess <= secret_number:
         print "Higher..."
@@ -58,12 +58,13 @@ def guess_a_num(secret_number,guessed_number_list):
     elif guess >= secret_number:
         print "Lower..."
         guess_a_num(secret_number,guessed_number_list)
-    print guessed_number_list
+    print "It only took you _ tries! You guessed guessed_number_list"
+
 
 
 
 def directions():
-    print "Great! You will have X number of guesses."
+    print "Great! You will have 5 chances to guess the number."
 
 
 

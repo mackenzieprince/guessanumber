@@ -1,4 +1,3 @@
-
 import random
 
 # 1. Ask if they want to play the game : play()
@@ -26,6 +25,7 @@ def play():
     num_games_played = 0
     while True:
         if num_games_played > 0:
+            print "Hello! Would you like to play Guess a Number?"
 
             # ask a different question...raw_input()
         else:
@@ -46,17 +46,17 @@ def play():
 
 
 def guess_a_num(secret_number,guessed_number_list):
-    guess = raw_input("Guess a number between 1 and 100 ")
+    guess = raw_input("I'm thinking of a number between 1 and 100. Care to take a guess? ")
     guess = int(guess)
     guessed_number_list.append(guess)
     if guess == secret_number:
-        print "Winner!"
+        print "You got it! The number was "
         # play()
     elif guess <= secret_number:
-        print "Too low"
+        print "Higher..."
         guess_a_num(secret_number,guessed_number_list)
     elif guess >= secret_number:
-        print "Too high"
+        print "Lower..."
         guess_a_num(secret_number,guessed_number_list)
     print guessed_number_list
 
@@ -68,4 +68,3 @@ def directions():
 
 
 play()
-

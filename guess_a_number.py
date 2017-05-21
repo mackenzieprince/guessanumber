@@ -21,28 +21,20 @@ import random
 
 
 def play():
-    play = "playing"
-   
+    guessed_number_list = []
     num_games_played = 0
-    while play == "playing":
-        if num_games_played == 0:
-            answer = raw_input("Would you like to play Guess a Number? (Y/N) ")
-            
+    while True:
+        if num_games_played > 0:
+            print "H? (Y/N) ?"
             # ask a different question...raw_input()
         else:
-            answer = raw_input("would you like to play again? (Y/N) ")
-        level = raw_input("Would you like the play Beginner or Advanced? (B or A) ")
-        if level.upper() == "B":
-            number_allowed_guesses = 10
-        else:
-            number_allowed_guesses = 5
+            answer = raw_input("Hello! Would you like to play Guess a Number? (Y/N) ")
+
         if answer.lower() == "y" or answer.lower() == "yes":
             secret_number = random.randint(1,100)
-            if num_games_played == 0: 
-                directions(number_allowed_guesses)
-                num_games_played = num_games_played +1
             print secret_number
-            guess_a_num(secret_number, number_allowed_guesses)
+            directions()
+            guess_a_num(secret_number,guessed_number_list)
 
         elif answer.lower() == "n" or answer.lower() == "no":
             print "Goodbye!"
@@ -51,43 +43,33 @@ def play():
             print "Please enter Y or N"
             # play()
 
-
-def guess_a_num(secret_number, number_allowed_guesses):
-    guessed_number_list = []
-    guessing = "not guessed"
-    while guessing == "not guessed":
-
-        guess = raw_input("Guess a number ")
-        guess = int(guess)
-        guessed_number_list.append(guess)
-        if guess == secret_number:
-            print "You got it! The number was",str(secret_number), "and it only took you",str(len(guessed_number_list)),"tries!"
-            break
+def guess_a_num(secret_number,guessed_number_list):
+    guess = raw_input("Please guess a number.  ")
+    guess = int(guess)
+    guessed_number_list.append(guess)
+    if guess == secret_number:
+        print "You got it! The number was (secret_number)"
         # play()
-        elif guess < secret_number:
-            print "Guess higher..."
-        elif guess > secret_number:
-            print "Guess lower..."
-        if len(guessed_number_list) > number_allowed_guesses:
-            print "You failed! The number was",str(secret_number)
-            guessing = "failed attempt"
-        print "So far you've guessed ", str(guessed_number_list)  
+    elif guess <= secret_number:
+        print "Higher..."
+        guess_a_num(secret_number,guessed_number_list)
+    elif guess >= secret_number:
+        print "Lower..."
+        guess_a_num(secret_number,guessed_number_list)
+    print "It only took you _ tries! You guessed guessed_number_list"
 
 
-# closeness = 100
-# if abs(secret_number - guess) < closeness:
-#     print "You're getting closer"
-#     closeness = abs(secret_number - guess)
+
+def directions():
+    print "Would you like to play Beginner level (B) or Advanced level (A)? n/Beginnger Level: I'm thinking of a number between 1 and 50. You have an unlimited number of guesses! /n Advanced level: I'm thinking of a number between 1 and 100. You will have 5 chances to guess the number. "
+        if raw_input("B")
+        play_beginner()
+    elif: raw_input("A")
+        play_advanced()
 
 
-def display():
-    print "******   *"
-    print "*        *"
+def play_beginner(secret_number,guessed_number_list)
+    guess = raw_input("Please guess a number between 1 and 50.  ")
 
 
-def directions(number_allowed_guesses):
-    print "I'm thinking of a number between 1 and 100. Guess within",str(number_allowed_guesses),"tries and you win! "
-
-
-display()
 play()

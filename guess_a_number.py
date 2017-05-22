@@ -40,14 +40,14 @@ def guess_a_num(secret_number,guessed_number_list):
 
 def directions():
     print "Would you like to play Beginner level (B) or Advanced level (A)? n/Beginnger Level: I'm thinking of a number between 1 and 50. You have an unlimited number of guesses! /n Advanced level: I'm thinking of a number between 1 and 100. You will have 5 chances to guess the number. "
-        if raw_input("B"):
-            upper_range = 50
-            number_of_guesses_allowed = None
-            play(upper_range,number_of_guesses_allowed)
-    elif raw_input("A"):
-            upper_range = 100
-            number_of_guesses_allowed = 5
-            play(upper_range,number_of_guesses_allowed)
+    if level == "A":
+    upper_limit = 100
+    allowed_guesses = 5
+else:
+    upper_limit = 50
+    allowed_guesses = None
+
+secret_number = random.randint(1,upper_limit)
 
         
 

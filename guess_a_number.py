@@ -45,6 +45,10 @@ def directions():
             number_of_guesses_allowed = None
             play(upper_range,number_of_guesses_allowed)
     elif raw_input("A"):
+            upper_range = 100
+            number_of_guesses_allowed = 5
+            play(upper_range,number_of_guesses_allowed)
+
         
 
 
